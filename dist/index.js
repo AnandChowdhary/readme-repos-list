@@ -1458,7 +1458,7 @@ exports.run = async () => {
     let contents = Buffer.from(current.data.content, "base64").toString("utf8");
     const start = core_1.getInput("start") || "<!-- start: readme-repos-list -->";
     const end = core_1.getInput("end") || "<!-- end: readme-repos-list -->";
-    replace_1.replaceContents(start, end, contents, md);
+    contents = replace_1.replaceContents(start, end, contents, md);
     await octokit.repos.createOrUpdateFileContents({
         owner,
         repo,
