@@ -735,13 +735,6 @@ module.exports = require("https");
 
 /***/ }),
 
-/***/ 225:
-/***/ (function(module) {
-
-module.exports = require("fs/promises");
-
-/***/ }),
-
 /***/ 262:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -1435,7 +1428,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 const core_1 = __webpack_require__(470);
 const github_1 = __webpack_require__(469);
-const promises_1 = __webpack_require__(225);
+const fs_1 = __webpack_require__(747);
 const path_1 = __webpack_require__(622);
 const replace_1 = __webpack_require__(433);
 const token = core_1.getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
@@ -1463,7 +1456,7 @@ exports.run = async () => {
     if (core_1.getInput("suffix"))
         md += core_1.getInput("suffix");
     const path = core_1.getInput("path") || "README.md";
-    let contents = await promises_1.readFile(path_1.join(".", path), "utf8");
+    let contents = fs_1.readFileSync(path_1.join(".", path), "utf8");
     const start = core_1.getInput("start") || "<!-- start: readme-repos-list -->";
     const end = core_1.getInput("end") || "<!-- end: readme-repos-list -->";
     replace_1.replaceContents(start, end, contents, md);
