@@ -14,7 +14,14 @@ export const run = async () => {
 
   const q = getInput("query");
   const per_page = getInput("max") ? parseInt(getInput("max"), 10) : 100;
-  const repos = await octokit.search.repos({ q, per_page });
+  const repos = await octokit.search.repos({
+    q,
+    per_page,
+    sort:
+      (getInput("sort") as "stars" | "forks" | "help-wanted-issues" | "updated" | undefined) ||
+      "stars",
+    order: (getInput("order") as "asc" | "desc" | undefined) || "desc",
+  });
 
   let md =
     getInput("prefix") ||
