@@ -1,3 +1,9 @@
+## [v1.0.3](https://github.com/koj-co/readme-repos-list/compare/v1.0.2...v1.0.3) (2020-11-05)
+
+### 🐛 Bug fixes
+
+- [`6f55745`](https://github.com/koj-co/readme-repos-list/commit/6f55745)  Use resolve to fetch file contents
+
 ## [v1.0.2](https://github.com/koj-co/readme-repos-list/compare/v1.0.1...v1.0.2) (2020-11-05)
 
 ### 🐛 Bug fixes
