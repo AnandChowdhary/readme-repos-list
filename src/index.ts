@@ -1,7 +1,7 @@
 import { getInput, setFailed } from "@actions/core";
 import { getOctokit } from "@actions/github";
 import { readFileSync } from "fs";
-import { join } from "path";
+import { resolve } from "path";
 import { replaceContents } from "./replace";
 
 const token = getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
@@ -35,7 +35,7 @@ export const run = async () => {
   if (getInput("suffix")) md += getInput("suffix");
 
   const path = getInput("path") || "README.md";
-  let contents = readFileSync(join(".", path), "utf8");
+  let contents = readFileSync(resolve(path), "utf8");
   const start = getInput("start") || "<!-- start: readme-repos-list -->";
   const end = getInput("end") || "<!-- end: readme-repos-list -->";
   replaceContents(start, end, contents, md);
