@@ -1,0 +1,13 @@
+name: Test CI
+on:
+  workflow_dispatch:
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run readme-repos-list
+        uses: koj-co/readme-repos-list@master
+        with:
+          token: ${{ secrets.GH_PAT }}
+          query: "Octocat in:readme"
+          max: 10
