@@ -40,6 +40,18 @@ jobs:
 This will create a README like so:
 
 <!-- start: readme-repos-list -->
+<!-- This list is auto-generated using koj-co/readme-repos-list -->
+<!-- Do not edit this list manually, your changes will be overwritten -->
+[![fnplus/Algorithms-Hacktoberfest](https://images.weserv.nl/?url=avatars1.githubusercontent.com%2Fu%2F24355438%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://hacktoberfest.digitalocean.com/)
+[![NITSkmOS/Algorithms](https://images.weserv.nl/?url=avatars3.githubusercontent.com%2Fu%2F38863995%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://nitskmos.github.io/Algorithms)
+[![fnplus/interview-techdev-guide](https://images.weserv.nl/?url=avatars1.githubusercontent.com%2Fu%2F24355438%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](http://bit.ly/fnplusnow)
+[![faroit/awesome-python-scientific-audio](https://images.weserv.nl/?url=avatars3.githubusercontent.com%2Fu%2F72940%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/faroit/awesome-python-scientific-audio)
+[![jlord/patchwork](https://images.weserv.nl/?url=avatars3.githubusercontent.com%2Fu%2F1305617%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](http://jlord.github.io/patchwork)
+[![dzharii/awesome-typescript](https://images.weserv.nl/?url=avatars3.githubusercontent.com%2Fu%2F36020%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/dzharii/awesome-typescript)
+[![KotlinBy/awesome-kotlin](https://images.weserv.nl/?url=avatars0.githubusercontent.com%2Fu%2F17604656%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://kotlin.link/)
+[![alexpate/awesome-design-systems](https://images.weserv.nl/?url=avatars0.githubusercontent.com%2Fu%2F3749759%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://git.io/design-systems)
+[![drone/drone](https://images.weserv.nl/?url=avatars1.githubusercontent.com%2Fu%2F2181346%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://drone.io)
+[![521xueweihan/HelloGitHub](https://images.weserv.nl/?url=avatars3.githubusercontent.com%2Fu%2F8255800%3Fv%3D4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://hellogithub.com/)
 <!-- end: readme-repos-list -->
 
 ### Inputs
