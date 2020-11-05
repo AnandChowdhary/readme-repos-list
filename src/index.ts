@@ -1,6 +1,6 @@
 import { getInput, setFailed } from "@actions/core";
 import { getOctokit } from "@actions/github";
-import { readFile } from "fs/promises";
+import { readFileSync } from "fs";
 import { join } from "path";
 import { replaceContents } from "./replace";
 
@@ -35,7 +35,7 @@ export const run = async () => {
   if (getInput("suffix")) md += getInput("suffix");
 
   const path = getInput("path") || "README.md";
-  let contents = await readFile(join(".", path), "utf8");
+  let contents = readFileSync(join(".", path), "utf8");
   const start = getInput("start") || "<!-- start: readme-repos-list -->";
   const end = getInput("end") || "<!-- end: readme-repos-list -->";
   replaceContents(start, end, contents, md);
