@@ -1456,7 +1456,7 @@ exports.run = async () => {
     if (core_1.getInput("suffix"))
         md += core_1.getInput("suffix");
     const path = core_1.getInput("path") || "README.md";
-    let contents = fs_1.readFileSync(path_1.join(".", path), "utf8");
+    let contents = fs_1.readFileSync(path_1.resolve(path), "utf8");
     const start = core_1.getInput("start") || "<!-- start: readme-repos-list -->";
     const end = core_1.getInput("end") || "<!-- end: readme-repos-list -->";
     replace_1.replaceContents(start, end, contents, md);
