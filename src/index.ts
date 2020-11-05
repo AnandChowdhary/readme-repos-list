@@ -21,8 +21,10 @@ export const run = async () => {
     "\n<!-- This list is auto-generated using koj-co/readme-repos-list -->\n<!-- Do not edit this list manually, your changes will be overwritten -->\n";
   repos.data.items
     .filter((repo) => repo.full_name !== `${owner}/${repo}`)
-    .filter((item, index, items) => items.map((i) => i.full_name).indexOf(item.full_name) === index)
     .sort((a, b) => a.stargazers_count - b.stargazers_count)
+    .filter((item, index, items) =>
+      getInput("one-per-owner") ? items.map((i) => i.owner).indexOf(item.owner) === index : true
+    )
     .forEach((item) => {
       md += `[![${item.full_name}](https://images.weserv.nl/?url=${encodeURIComponent(
         item.owner.avatar_url.split("//")[1]

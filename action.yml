@@ -41,6 +41,9 @@ inputs:
   commit-message:
     required: false
     description: "Commit message when updating file"
+  one-per-owner:
+    required: false
+    description "Show only one repository per owner"
 runs:
   using: "node12"
   main: "dist/index.js"
