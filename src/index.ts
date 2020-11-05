@@ -1,7 +1,5 @@
 import { getInput, setFailed } from "@actions/core";
 import { getOctokit } from "@actions/github";
-import { readFileSync } from "fs";
-import { resolve } from "path";
 import { replaceContents } from "./replace";
 
 const token = getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
@@ -35,12 +33,12 @@ export const run = async () => {
   if (getInput("suffix")) md += getInput("suffix");
 
   const path = getInput("path") || "README.md";
-  let contents = readFileSync(resolve(path), "utf8");
+  const current = await octokit.repos.getContent({ owner, repo, path });
+  let contents = Buffer.from(current.data.content, "base64").toString("utf8");
   const start = getInput("start") || "<!-- start: readme-repos-list -->";
   const end = getInput("end") || "<!-- end: readme-repos-list -->";
   replaceContents(start, end, contents, md);
 
-  const current = await octokit.repos.getContent({ owner, repo, path });
   await octokit.repos.createOrUpdateFileContents({
     owner,
     repo,
