@@ -43,7 +43,13 @@ inputs:
     description: "Commit message when updating file"
   one-per-owner:
     required: false
-    description "Show only one repository per owner"
+    description: "Show only one repository per owner"
+  sort:
+    required: false
+    description: "Sort repositories by..."
+  order:
+    required: false
+    description: "Order by desc or asc"
 runs:
   using: "node12"
   main: "dist/index.js"

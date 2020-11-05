@@ -86,6 +86,8 @@ Octocat in:readme user:koj-co
 | `end`            | Ending comment                         |
 | `commit-message` | Updating file commit message           |
 | `one-per-owner`  | Show only one repo per owner           |
+| `sort`           | Sort repositories by this parameter    |
+| `order`          | Order by "asc" or "desc"               |
 
 ## 📄 License
 
