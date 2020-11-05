@@ -735,6 +735,13 @@ module.exports = require("https");
 
 /***/ }),
 
+/***/ 225:
+/***/ (function(module) {
+
+module.exports = require("fs/promises");
+
+/***/ }),
+
 /***/ 262:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -1425,23 +1432,50 @@ exports.getUserAgent = getUserAgent;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.wait = exports.run = void 0;
+exports.run = void 0;
 const core_1 = __webpack_require__(470);
 const github_1 = __webpack_require__(469);
+const promises_1 = __webpack_require__(225);
+const path_1 = __webpack_require__(622);
+const replace_1 = __webpack_require__(433);
 const token = core_1.getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
 exports.run = async () => {
     if (!token)
         throw new Error("GitHub token not found");
     const octokit = github_1.getOctokit(token);
-    const ms = core_1.getInput("milliseconds");
-    core_1.debug(`Waiting ${ms} milliseconds ...`);
-    core_1.debug(new Date().toTimeString());
-    await exports.wait(parseInt(ms, 10));
-    core_1.debug(new Date().toTimeString());
-    core_1.setOutput("time", new Date().toTimeString());
-};
-exports.wait = (milliseconds) => {
-    return new Promise((resolve) => setTimeout(() => resolve(), milliseconds));
+    let [owner, repo] = (process.env.GITHUB_REPOSITORY || "").split("/");
+    owner = owner || core_1.getInput("owner");
+    repo = repo || core_1.getInput("repo");
+    if (!owner || !repo)
+        throw new Error("Owner or repo not found");
+    const q = core_1.getInput("query");
+    const per_page = core_1.getInput("max") ? parseInt(core_1.getInput("max"), 10) : 100;
+    const repos = await octokit.search.repos({ q, per_page });
+    let md = core_1.getInput("prefix") ||
+        "\n<!-- This list is auto-generated using koj-co/readme-repos-list -->\n<!-- Do not edit this list manually, your changes will be overwritten -->\n";
+    repos.data.items
+        .filter((repo) => repo.full_name !== `${owner}/${repo}`)
+        .filter((item, index, items) => items.map((i) => i.full_name).indexOf(item.full_name) === index)
+        .sort((a, b) => a.stargazers_count - b.stargazers_count)
+        .forEach((item) => {
+        md += `[![${item.full_name}](https://images.weserv.nl/?url=${encodeURIComponent(item.owner.avatar_url.split("//")[1])}&${core_1.getInput("weserv-query") || "h=50&w=50&fit=cover&mask=circle&maxage=7d"})](${core_1.getInput("no-homepage") ? item.html_url : item.homepage || item.html_url})\n`;
+    });
+    if (core_1.getInput("suffix"))
+        md += core_1.getInput("suffix");
+    const path = core_1.getInput("path") || "README.md";
+    let contents = await promises_1.readFile(path_1.join(".", path), "utf8");
+    const start = core_1.getInput("start") || "<!-- start: readme-repos-list -->";
+    const end = core_1.getInput("end") || "<!-- end: readme-repos-list -->";
+    replace_1.replaceContents(start, end, contents, md);
+    const current = await octokit.repos.getContent({ owner, repo, path });
+    await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path,
+        sha: current.data.sha,
+        content: Buffer.from(contents).toString("base64"),
+        message: core_1.getInput("commit-message") || ":pencil: Update repositories in README [skip ci]",
+    });
 };
 exports.run()
     .then(() => { })
@@ -1536,6 +1570,24 @@ function escapeProperty(s) {
         .replace(/,/g, '%2C');
 }
 //# sourceMappingURL=command.js.map
+
+/***/ }),
+
+/***/ 433:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.replaceContents = void 0;
+exports.replaceContents = (start, end, readme, contents) => {
+    if (!readme.includes(start) || !readme.includes(end))
+        throw new Error("Starting and ending string not found");
+    const startString = readme.split(start)[0];
+    const endString = readme.split(end)[1];
+    return `${startString}${start}${contents}${end}${endString}`;
+};
+
 
 /***/ }),
 
