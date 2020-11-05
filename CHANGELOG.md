@@ -1,3 +1,9 @@
+## [v1.0.4](https://github.com/koj-co/readme-repos-list/compare/v1.0.3...v1.0.4) (2020-11-05)
+
+### 🐛 Bug fixes
+
+- [`50be551`](https://github.com/koj-co/readme-repos-list/commit/50be551)  Use octokit to read file contents
+
 ## [v1.0.3](https://github.com/koj-co/readme-repos-list/compare/v1.0.2...v1.0.3) (2020-11-05)
 
 ### 🐛 Bug fixes
