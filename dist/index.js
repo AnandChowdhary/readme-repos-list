@@ -1441,7 +1441,13 @@ exports.run = async () => {
         throw new Error("Owner or repo not found");
     const q = core_1.getInput("query");
     const per_page = core_1.getInput("max") ? parseInt(core_1.getInput("max"), 10) : 100;
-    const repos = await octokit.search.repos({ q, per_page });
+    const repos = await octokit.search.repos({
+        q,
+        per_page,
+        sort: core_1.getInput("sort") ||
+            "stars",
+        order: core_1.getInput("order") || "desc",
+    });
     let md = core_1.getInput("prefix") ||
         "\n<!-- This list is auto-generated using koj-co/readme-repos-list -->\n<!-- Do not edit this list manually, your changes will be overwritten -->\n";
     repos.data.items
@@ -1573,7 +1579,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.replaceContents = void 0;
 exports.replaceContents = (start, end, readme, contents) => {
     if (!readme.includes(start) || !readme.includes(end))
-        throw new Error("Starting and ending string not found");
+        console.log("Starting and ending string not found");
     const startString = readme.split(start)[0];
     const endString = readme.split(end)[1];
     return `${startString}${start}${contents}${end}${endString}`;
