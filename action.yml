@@ -1,14 +1,49 @@
-name: "Action.ts"
-description: "GitHub Actions starter for TypeScript with automated releases"
+name: "README Repos List"
+description: "GitHub Action to list repositories in a README"
 author: "Koj <https://github.com/koj.co>"
 inputs:
-  milliseconds:
+  token:
     required: true
-    description: "Number of milliseconds to wait"
-    default: "1000"
+    description: "GitHub token"
+  query:
+    required: true
+    description: "Search query to find repositories"
+  owner:
+    required: false
+    description: "Owner of repository to commit in"
+  repo:
+    required: false
+    description: "Name of repository to commit in"
+  max:
+    required: false
+    description: "Maximum number of repositories to add"
+  prefix:
+    required: false
+    description: "Prefix content to add before list"
+  weserv-query:
+    required: false
+    description: "Query parameters for image manipulation"
+  no-homepage:
+    required: false
+    description: "Link to repository, not homepage (if found)"
+  suffix:
+    required: false
+    description: "Suffix content to add after list"
+  path:
+    required: false
+    description: "File path, defaults to README.md"
+  start:
+    required: false
+    description: "Starting comment to look for"
+  end:
+    required: false
+    description: "Ending commit to look for"
+  commit-message:
+    required: false
+    description: "Commit message when updating file"
 runs:
   using: "node12"
   main: "dist/index.js"
 branding:
-  icon: "umbrella"
-  color: "purple"
+  icon: "list"
+  color: "yellow"
