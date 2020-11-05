@@ -1,3 +1,9 @@
+## [v1.0.5](https://github.com/koj-co/readme-repos-list/compare/v1.0.4...v1.0.5) (2020-11-05)
+
+### 🐛 Bug fixes
+
+- [`7e028f0`](https://github.com/koj-co/readme-repos-list/commit/7e028f0)  Replace contents value
+
 ## [v1.0.4](https://github.com/koj-co/readme-repos-list/compare/v1.0.3...v1.0.4) (2020-11-05)
 
 ### 🐛 Bug fixes

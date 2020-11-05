@@ -1,6 +1,6 @@
 {
   "name": "readme-repos-list",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "GitHub Action to list repositories in a README",
   "main": "dist/index.js",
   "scripts": {
