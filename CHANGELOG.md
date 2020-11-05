@@ -1,3 +1,9 @@
+## [v1.1.1](https://github.com/koj-co/readme-repos-list/compare/v1.1.0...v1.1.1) (2020-11-05)
+
+### ♻️ Updates
+
+- [`94a63b1`](https://github.com/koj-co/readme-repos-list/commit/94a63b1)  Add sort order as stars desc
+
 ## [v1.1.0](https://github.com/koj-co/readme-repos-list/compare/v1.0.5...v1.1.0) (2020-11-05)
 
 ### ✨ New features
