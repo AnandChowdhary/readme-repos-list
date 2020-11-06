@@ -30,7 +30,9 @@ export const run = async () => {
     .filter((repo) => repo.full_name !== `${owner}/${repo}`)
     .sort((a, b) => a.stargazers_count - b.stargazers_count)
     .filter((item, index, items) =>
-      getInput("one-per-owner") ? items.map((i) => i.owner).indexOf(item.owner) === index : true
+      getInput("one-per-owner")
+        ? items.map((i) => i.owner.login).indexOf(item.owner.login) === index
+        : true
     )
     .forEach((item) => {
       md += `[![${item.full_name}](https://images.weserv.nl/?url=${encodeURIComponent(
