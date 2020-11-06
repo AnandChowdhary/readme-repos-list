@@ -1,3 +1,9 @@
+## [v1.1.2](https://github.com/koj-co/readme-repos-list/compare/v1.1.1...v1.1.2) (2020-11-06)
+
+### 🐛 Bug fixes
+
+- [`a0f9f25`](https://github.com/koj-co/readme-repos-list/commit/a0f9f25)  Use owner.login for unique items
+
 ## [v1.1.1](https://github.com/koj-co/readme-repos-list/compare/v1.1.0...v1.1.1) (2020-11-05)
 
 ### ♻️ Updates
