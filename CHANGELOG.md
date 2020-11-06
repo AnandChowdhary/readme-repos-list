@@ -1,3 +1,9 @@
+## [v1.1.3](https://github.com/koj-co/readme-repos-list/compare/v1.1.2...v1.1.3) (2020-11-06)
+
+### 🐛 Bug fixes
+
+- [`388216a`](https://github.com/koj-co/readme-repos-list/commit/388216a)  Don&#x27;t replace if comments don&#x27;t exist
+
 ## [v1.1.2](https://github.com/koj-co/readme-repos-list/compare/v1.1.1...v1.1.2) (2020-11-06)
 
 ### 🐛 Bug fixes
