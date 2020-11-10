@@ -1,3 +1,13 @@
+## [v1.1.4](https://github.com/koj-co/readme-repos-list/compare/v1.1.3...v1.1.4) (2020-11-10)
+
+### ♻️ Updates
+
+- [`49e735e`](https://github.com/koj-co/readme-repos-list/commit/49e735e)  Only run if contents are different
+
+### ⬆️ Dependency updates
+
+- [`f0a54d1`](https://github.com/koj-co/readme-repos-list/commit/f0a54d1)  Bump ts-jest from 26.4.3 to 26.4.4
+
 ## [v1.1.3](https://github.com/koj-co/readme-repos-list/compare/v1.1.2...v1.1.3) (2020-11-06)
 
 ### 🐛 Bug fixes
