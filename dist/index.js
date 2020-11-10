@@ -1467,14 +1467,15 @@ exports.run = async () => {
     const start = core_1.getInput("start") || "<!-- start: readme-repos-list -->";
     const end = core_1.getInput("end") || "<!-- end: readme-repos-list -->";
     contents = replace_1.replaceContents(start, end, contents, md);
-    await octokit.repos.createOrUpdateFileContents({
-        owner,
-        repo,
-        path,
-        sha: current.data.sha,
-        content: Buffer.from(contents).toString("base64"),
-        message: core_1.getInput("commit-message") || ":pencil: Update repositories in README [skip ci]",
-    });
+    if (contents.trim() !== Buffer.from(current.data.content, "base64").toString("utf8").trim())
+        await octokit.repos.createOrUpdateFileContents({
+            owner,
+            repo,
+            path,
+            sha: current.data.sha,
+            content: Buffer.from(contents).toString("base64"),
+            message: core_1.getInput("commit-message") || ":pencil: Update repositories in README [skip ci]",
+        });
 };
 exports.run()
     .then(() => { })
