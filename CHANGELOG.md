@@ -1,3 +1,9 @@
+## [v1.1.5](https://github.com/koj-co/readme-repos-list/compare/v1.1.4...v1.1.5) (2020-11-17)
+
+### ⬆️ Dependency updates
+
+- [`e886a01`](https://github.com/koj-co/readme-repos-list/commit/e886a01)  Update koj-co/github-actions-starter
+
 ## [v1.1.4](https://github.com/koj-co/readme-repos-list/compare/v1.1.3...v1.1.4) (2020-11-10)
 
 ### ♻️ Updates
