@@ -12,3 +12,4 @@ test("throws if string not found", () => {
 test("replaces string", () => {
     expect(replace_1.replaceContents("<!--start-->", "<!--end-->", "Hello <!--start-->OK<!--end--> person", "nice")).toBe("Hello <!--start-->nice<!--end--> person");
 });
+//# sourceMappingURL=index.spec.js.map

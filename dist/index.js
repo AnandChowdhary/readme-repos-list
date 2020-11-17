@@ -1483,7 +1483,7 @@ exports.run()
     console.error("ERROR", error);
     core_1.setFailed(error.message);
 });
-
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
@@ -1589,7 +1589,7 @@ exports.replaceContents = (start, end, readme, contents) => {
     const endString = readme.split(end)[1];
     return `${startString}${start}${contents}${end}${endString}`;
 };
-
+//# sourceMappingURL=replace.js.map
 
 /***/ }),
 

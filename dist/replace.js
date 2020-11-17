@@ -10,3 +10,4 @@ exports.replaceContents = (start, end, readme, contents) => {
     const endString = readme.split(end)[1];
     return `${startString}${start}${contents}${end}${endString}`;
 };
+//# sourceMappingURL=replace.js.map
