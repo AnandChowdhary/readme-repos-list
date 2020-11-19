@@ -1,3 +1,15 @@
+## [v1.2.0](https://github.com/koj-co/readme-repos-list/compare/v1.1.5...v1.2.0) (2020-11-19)
+
+### ✨ New features
+
+- [`c93164b`](https://github.com/koj-co/readme-repos-list/commit/c93164b)  Add support for image size
+
+### ⬆️ Dependency updates
+
+- [`fde6b6e`](https://github.com/koj-co/readme-repos-list/commit/fde6b6e)  Bump semantic-release from 17.2.2 to 17.2.3
+- [`745b732`](https://github.com/koj-co/readme-repos-list/commit/745b732)  Bump @koj/config from 1.2.8 to 1.2.9
+- [`c0bcbf8`](https://github.com/koj-co/readme-repos-list/commit/c0bcbf8)  Bump vsoch/pull-request-action from 1.0.11 to 1.0.12
+
 ## [v1.1.5](https://github.com/koj-co/readme-repos-list/compare/v1.1.4...v1.1.5) (2020-11-17)
 
 ### ⬆️ Dependency updates
