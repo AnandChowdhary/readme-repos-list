@@ -11,6 +11,7 @@ export const run = async () => {
   owner = owner || getInput("owner");
   repo = repo || getInput("repo");
   if (!owner || !repo) throw new Error("Owner or repo not found");
+  const size = getInput("size") || 50;
 
   const q = getInput("query");
   const per_page = getInput("max") ? parseInt(getInput("max"), 10) : 100;
@@ -37,7 +38,7 @@ export const run = async () => {
     .forEach((item) => {
       md += `[![${item.full_name}](https://images.weserv.nl/?url=${encodeURIComponent(
         item.owner.avatar_url.split("//")[1]
-      )}&${getInput("weserv-query") || "h=50&w=50&fit=cover&mask=circle&maxage=7d"})](${
+      )}&${getInput("weserv-query") || `h=${size}&w=${size}&fit=cover&mask=circle&maxage=7d`})](${
         getInput("no-homepage") ? item.html_url : item.homepage || item.html_url
       })\n`;
     });

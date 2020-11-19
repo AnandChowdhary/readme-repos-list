@@ -52,6 +52,10 @@ inputs:
     required: false
     description: "Order by desc or asc"
     default: "stars"
+  size:
+    required: false
+    description: "Width and height of the image"
+    default: 50
 runs:
   using: "node12"
   main: "dist/index.js"
