@@ -47,9 +47,11 @@ inputs:
   sort:
     required: false
     description: "Sort repositories by..."
+    default: "desc"
   order:
     required: false
     description: "Order by desc or asc"
+    default: "stars"
 runs:
   using: "node12"
   main: "dist/index.js"
