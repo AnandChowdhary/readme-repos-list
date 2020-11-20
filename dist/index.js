@@ -1430,7 +1430,7 @@ const core_1 = __webpack_require__(470);
 const github_1 = __webpack_require__(469);
 const replace_1 = __webpack_require__(433);
 const token = core_1.getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
-exports.run = async () => {
+const run = async () => {
     if (!token)
         throw new Error("GitHub token not found");
     const octokit = github_1.getOctokit(token);
@@ -1478,6 +1478,7 @@ exports.run = async () => {
             message: core_1.getInput("commit-message") || ":pencil: Update repositories in README [skip ci]",
         });
 };
+exports.run = run;
 exports.run()
     .then(() => { })
     .catch((error) => {
@@ -1581,7 +1582,7 @@ function escapeProperty(s) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.replaceContents = void 0;
-exports.replaceContents = (start, end, readme, contents) => {
+const replaceContents = (start, end, readme, contents) => {
     if (!readme.includes(start) || !readme.includes(end)) {
         console.log("Starting and ending string not found");
         return readme;
@@ -1590,6 +1591,7 @@ exports.replaceContents = (start, end, readme, contents) => {
     const endString = readme.split(end)[1];
     return `${startString}${start}${contents}${end}${endString}`;
 };
+exports.replaceContents = replaceContents;
 //# sourceMappingURL=replace.js.map
 
 /***/ }),
