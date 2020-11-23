@@ -1,18 +1,13 @@
-name: Test CI
+name: README Repos List CI
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 jobs:
-  test:
-    name: Test action
-    runs-on: ubuntu-18.04
-    if: "contains(github.event.head_commit.message, 'Deploy new version')"
+  list:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.4
-      - uses: ./
+      - name: Run readme-repos-list
+        uses: koj-co/readme-repos-list@master
         with:
-          milliseconds: 1000
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
+          query: "Octocat in:readme"
+          max: 10
