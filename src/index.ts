@@ -23,6 +23,28 @@ export const run = async () => {
       "stars",
     order: (getInput("order") as "asc" | "desc" | undefined) || "desc",
   });
+  if (per_page > 100) {
+    const numberOfPagesRequired = Math.floor(per_page / 100);
+    for await (const page of Array.from(Array(numberOfPagesRequired)).map((_, i) => i + 2)) {
+      repos.data.items.push(
+        ...(
+          await octokit.search.repos({
+            q,
+            per_page,
+            sort:
+              (getInput("sort") as
+                | "stars"
+                | "forks"
+                | "help-wanted-issues"
+                | "updated"
+                | undefined) || "stars",
+            order: (getInput("order") as "asc" | "desc" | undefined) || "desc",
+            page,
+          })
+        ).data.items
+      );
+    }
+  }
 
   let md =
     getInput("prefix") ||
