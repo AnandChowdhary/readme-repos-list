@@ -1441,7 +1441,8 @@ const run = async () => {
         throw new Error("Owner or repo not found");
     const size = core_1.getInput("size") || 50;
     const q = core_1.getInput("query");
-    const per_page = core_1.getInput("max") ? parseInt(core_1.getInput("max"), 10) : 100;
+    const max = core_1.getInput("max") ? parseInt(core_1.getInput("max"), 10) : 100;
+    const per_page = max > 100 ? 100 : max;
     const repos = await octokit.search.repos({
         q,
         per_page,
@@ -1449,8 +1450,8 @@ const run = async () => {
             "stars",
         order: core_1.getInput("order") || "desc",
     });
-    if (per_page > 100) {
-        const numberOfPagesRequired = Math.floor(per_page / 100);
+    if (max > 100) {
+        const numberOfPagesRequired = Math.floor(max / 100);
         for await (const page of Array.from(Array(numberOfPagesRequired)).map((_, i) => i + 2)) {
             repos.data.items.push(...(await octokit.search.repos({
                 q,
