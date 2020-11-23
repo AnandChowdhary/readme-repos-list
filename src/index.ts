@@ -14,7 +14,8 @@ export const run = async () => {
   const size = getInput("size") || 50;
 
   const q = getInput("query");
-  const per_page = getInput("max") ? parseInt(getInput("max"), 10) : 100;
+  const max = getInput("max") ? parseInt(getInput("max"), 10) : 100;
+  const per_page = max > 100 ? 100 : max;
   const repos = await octokit.search.repos({
     q,
     per_page,
