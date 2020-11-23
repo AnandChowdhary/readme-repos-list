@@ -1,3 +1,9 @@
+## [v1.3.2](https://github.com/koj-co/readme-repos-list/compare/v1.3.1...v1.3.2) (2020-11-23)
+
+### 🐛 Bug fixes
+
+- [`19c85b9`](https://github.com/koj-co/readme-repos-list/commit/19c85b9)  Use Math.min for num pages
+
 ## [v1.3.1](https://github.com/koj-co/readme-repos-list/compare/v1.3.0...v1.3.1) (2020-11-23)
 
 ### 🐛 Bug fixes
