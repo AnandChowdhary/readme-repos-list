@@ -1,3 +1,11 @@
+## [v1.3.1](https://github.com/koj-co/readme-repos-list/compare/v1.3.0...v1.3.1) (2020-11-23)
+
+### 🐛 Bug fixes
+
+- [`626ad4f`](https://github.com/koj-co/readme-repos-list/commit/626ad4f)  Set max to 100 results
+- [`5cd35f5`](https://github.com/koj-co/readme-repos-list/commit/5cd35f5)  Check for max &gt; 100
+- [`ce1ba4b`](https://github.com/koj-co/readme-repos-list/commit/ce1ba4b)  Number of pages is max/100
+
 ## [v1.3.0](https://github.com/koj-co/readme-repos-list/compare/v1.2.0...v1.3.0) (2020-11-23)
 
 ### ✨ New features
