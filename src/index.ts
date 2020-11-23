@@ -25,7 +25,7 @@ export const run = async () => {
     order: (getInput("order") as "asc" | "desc" | undefined) || "desc",
   });
   if (max > 100) {
-    const numberOfPagesRequired = Math.floor(per_page / 100);
+    const numberOfPagesRequired = Math.floor(max / 100);
     for await (const page of Array.from(Array(numberOfPagesRequired)).map((_, i) => i + 2)) {
       repos.data.items.push(
         ...(
