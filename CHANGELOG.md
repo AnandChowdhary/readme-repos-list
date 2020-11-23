@@ -1,3 +1,14 @@
+## [v1.3.0](https://github.com/koj-co/readme-repos-list/compare/v1.2.0...v1.3.0) (2020-11-23)
+
+### ✨ New features
+
+- [`809eeec`](https://github.com/koj-co/readme-repos-list/commit/809eeec)  Add support for pagination
+
+### ⬆️ Dependency updates
+
+- [`f5ad985`](https://github.com/koj-co/readme-repos-list/commit/f5ad985)  Bump semantic-release from 17.2.3 to 17.2.4
+- [`357afd8`](https://github.com/koj-co/readme-repos-list/commit/357afd8)  Bump typescript from 4.0.5 to 4.1.2
+
 ## [v1.2.0](https://github.com/koj-co/readme-repos-list/compare/v1.1.5...v1.2.0) (2020-11-19)
 
 ### ✨ New features
