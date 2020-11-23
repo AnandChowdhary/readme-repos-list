@@ -1449,6 +1449,18 @@ const run = async () => {
             "stars",
         order: core_1.getInput("order") || "desc",
     });
+    if (per_page > 100) {
+        const numberOfPagesRequired = Math.floor(per_page / 100);
+        for await (const page of Array.from(Array(numberOfPagesRequired)).map((_, i) => i + 2)) {
+            repos.data.items.push(...(await octokit.search.repos({
+                q,
+                per_page,
+                sort: core_1.getInput("sort") || "stars",
+                order: core_1.getInput("order") || "desc",
+                page,
+            })).data.items);
+        }
+    }
     let md = core_1.getInput("prefix") ||
         "\n<!-- This list is auto-generated using koj-co/readme-repos-list -->\n<!-- Do not edit this list manually, your changes will be overwritten -->\n";
     repos.data.items
