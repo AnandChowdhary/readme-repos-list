@@ -63,10 +63,30 @@ jobs:
             return context.payload.ref.startsWith("refs/heads/feature") ||
               context.payload.ref.startsWith("refs/heads/hotfix") ||
               context.payload.ref.startsWith("refs/heads/bug");
-      - name: pull-request-action
-        uses: vsoch/pull-request-action@1.0.15
+      - name: Create pull request
         if: always() && steps.should-pr.outputs.result == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          PULL_REQUEST_BRANCH: "master"
-          PULL_REQUEST_REVIEWERS: "AnandChowdhary"
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          HEAD_BRANCH: ${{ github.ref_name }}
+          BASE_BRANCH: master
+          REVIEWER: AnandChowdhary
+        run: |
+          if gh pr view "$HEAD_BRANCH" --repo "$GITHUB_REPOSITORY" --json number >/dev/null 2>&1; then
+            echo "Pull request already exists for $HEAD_BRANCH"
+            exit 0
+          fi
+
+          args=(
+            --repo "$GITHUB_REPOSITORY"
+            --base "$BASE_BRANCH"
+            --head "$GITHUB_REPOSITORY_OWNER:$HEAD_BRANCH"
+            --title "$PULL_REQUEST_TITLE"
+            --body "$PULL_REQUEST_BODY"
+            --reviewer "$REVIEWER"
+          )
+
+          if [ "$PULL_REQUEST_DRAFT" = "true" ]; then
+            args+=(--draft)
+          fi
+
+          gh pr create "${args[@]}"
