@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label all PRs
-        uses: actions/labeler@master
+        uses: actions/labeler@v6
         with:
           repo-token: "${{ secrets.GH_PAT }}"
       - name: Label approved PRs
