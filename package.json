@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/koj-co/readme-repos-list#readme",
   "devDependencies": {
-    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/git": "^10.0.1",
     "@types/jest": "^26.0.14",
     "@zeit/ncc": "^0.22.3",
     "jest": "^26.5.2",
