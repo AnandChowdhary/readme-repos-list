@@ -1429,26 +1429,26 @@ exports.run = void 0;
 const core_1 = __webpack_require__(470);
 const github_1 = __webpack_require__(469);
 const replace_1 = __webpack_require__(433);
-const token = core_1.getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
+const token = (0, core_1.getInput)("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
 const run = async () => {
     if (!token)
         throw new Error("GitHub token not found");
-    const octokit = github_1.getOctokit(token);
+    const octokit = (0, github_1.getOctokit)(token);
     let [owner, repo] = (process.env.GITHUB_REPOSITORY || "").split("/");
-    owner = owner || core_1.getInput("owner");
-    repo = repo || core_1.getInput("repo");
+    owner = owner || (0, core_1.getInput)("owner");
+    repo = repo || (0, core_1.getInput)("repo");
     if (!owner || !repo)
         throw new Error("Owner or repo not found");
-    const size = core_1.getInput("size") || 50;
-    const q = core_1.getInput("query");
-    const max = core_1.getInput("max") ? parseInt(core_1.getInput("max"), 10) : 100;
+    const size = (0, core_1.getInput)("size") || 50;
+    const q = (0, core_1.getInput)("query");
+    const max = (0, core_1.getInput)("max") ? parseInt((0, core_1.getInput)("max"), 10) : 100;
     const per_page = Math.min(max, 100);
     const repos = await octokit.search.repos({
         q,
         per_page,
-        sort: core_1.getInput("sort") ||
+        sort: (0, core_1.getInput)("sort") ||
             "stars",
-        order: core_1.getInput("order") || "desc",
+        order: (0, core_1.getInput)("order") || "desc",
     });
     if (max > 100) {
         const numberOfPagesRequired = Math.min(9, Math.floor(max / 100));
@@ -1456,31 +1456,31 @@ const run = async () => {
             repos.data.items.push(...(await octokit.search.repos({
                 q,
                 per_page,
-                sort: core_1.getInput("sort") || "stars",
-                order: core_1.getInput("order") || "desc",
+                sort: (0, core_1.getInput)("sort") || "stars",
+                order: (0, core_1.getInput)("order") || "desc",
                 page,
             })).data.items);
         }
     }
-    let md = core_1.getInput("prefix") ||
+    let md = (0, core_1.getInput)("prefix") ||
         "\n<!-- This list is auto-generated using koj-co/readme-repos-list -->\n<!-- Do not edit this list manually, your changes will be overwritten -->\n";
     repos.data.items
         .filter((repo) => repo.full_name !== `${owner}/${repo}`)
         .sort((a, b) => a.stargazers_count - b.stargazers_count)
-        .filter((item, index, items) => core_1.getInput("one-per-owner")
+        .filter((item, index, items) => (0, core_1.getInput)("one-per-owner")
         ? items.map((i) => i.owner.login).indexOf(item.owner.login) === index
         : true)
         .forEach((item) => {
-        md += `[![${item.full_name}](https://images.weserv.nl/?url=${encodeURIComponent(item.owner.avatar_url.split("//")[1])}&${core_1.getInput("weserv-query") || `h=${size}&w=${size}&fit=cover&mask=circle&maxage=7d`})](${core_1.getInput("no-homepage") ? item.html_url : item.homepage || item.html_url})\n`;
+        md += `[![${item.full_name}](https://images.weserv.nl/?url=${encodeURIComponent(item.owner.avatar_url.split("//")[1])}&${(0, core_1.getInput)("weserv-query") || `h=${size}&w=${size}&fit=cover&mask=circle&maxage=7d`})](${(0, core_1.getInput)("no-homepage") ? item.html_url : item.homepage || item.html_url})\n`;
     });
-    if (core_1.getInput("suffix"))
-        md += core_1.getInput("suffix");
-    const path = core_1.getInput("path") || "README.md";
+    if ((0, core_1.getInput)("suffix"))
+        md += (0, core_1.getInput)("suffix");
+    const path = (0, core_1.getInput)("path") || "README.md";
     const current = await octokit.repos.getContent({ owner, repo, path });
     let contents = Buffer.from(current.data.content, "base64").toString("utf8");
-    const start = core_1.getInput("start") || "<!-- start: readme-repos-list -->";
-    const end = core_1.getInput("end") || "<!-- end: readme-repos-list -->";
-    contents = replace_1.replaceContents(start, end, contents, md);
+    const start = (0, core_1.getInput)("start") || "<!-- start: readme-repos-list -->";
+    const end = (0, core_1.getInput)("end") || "<!-- end: readme-repos-list -->";
+    contents = (0, replace_1.replaceContents)(start, end, contents, md);
     if (contents.trim() !== Buffer.from(current.data.content, "base64").toString("utf8").trim())
         await octokit.repos.createOrUpdateFileContents({
             owner,
@@ -1488,15 +1488,15 @@ const run = async () => {
             path,
             sha: current.data.sha,
             content: Buffer.from(contents).toString("base64"),
-            message: core_1.getInput("commit-message") || ":pencil: Update repositories in README [skip ci]",
+            message: (0, core_1.getInput)("commit-message") || ":pencil: Update repositories in README [skip ci]",
         });
 };
 exports.run = run;
-exports.run()
+(0, exports.run)()
     .then(() => { })
     .catch((error) => {
     console.error("ERROR", error);
-    core_1.setFailed(error.message);
+    (0, core_1.setFailed)(error.message);
 });
 //# sourceMappingURL=index.js.map
 
